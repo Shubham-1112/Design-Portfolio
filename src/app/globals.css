@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ocean-glow: 0 0 80px rgba(14, 165, 233, 0.06);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-surface-50 text-ink-800;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-ocean-200 text-ocean-900;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ocean-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ocean-400;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .heading-xl {
+    @apply font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-ink-900 leading-[1.1];
+  }
+
+  .heading-lg {
+    @apply font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-ink-900 leading-tight;
+  }
+
+  .heading-md {
+    @apply font-display text-2xl sm:text-3xl font-semibold tracking-tight text-ink-900;
+  }
+
+  .heading-sm {
+    @apply font-display text-xl sm:text-2xl font-semibold text-ink-900;
+  }
+
+  .body-lg {
+    @apply text-lg sm:text-xl text-ink-600 leading-relaxed;
+  }
+
+  .body-md {
+    @apply text-base text-ink-600 leading-relaxed;
+  }
+
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/60 shadow-glass rounded-2xl;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-ocean-600 via-ocean-500 to-cyan-500;
+  }
+
+  .ocean-dot {
+    @apply w-2 h-2 rounded-full bg-ocean-400;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Page transition overlay */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
