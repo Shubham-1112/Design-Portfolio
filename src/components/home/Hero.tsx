@@ -1,8 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import dynamic from "next/dynamic";
 import Button from "@/components/ui/Button";
 import { HiOutlineArrowDown } from "react-icons/hi";
+
+const SplineScene = dynamic(() => import("./SplineWrapper"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full min-h-[400px] lg:min-h-[500px]" />
+  ),
+});
 
 const stats = [
   { value: "8+", label: "Projects Delivered" },
@@ -11,101 +19,116 @@ const stats = [
 ];
 
 export default function Hero() {
+  const { scrollY } = useScroll();
+  const scrollOpacity = useTransform(scrollY, [0, 150], [1, 0]);
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-hero pointer-events-none" />
-      <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-ocean-100/30 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-100/20 rounded-full blur-[100px] pointer-events-none" />
+      {/* Premium Atmospheric Background */}
+      <div className="absolute inset-0 bg-surface-50 pointer-events-none" />
 
-      {/* Grid pattern overlay */}
+      {/* Right side deep atmospheric glow */}
+      <div className="absolute top-[-10%] right-[-5%] w-[80%] h-[120%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-ocean-900/90 via-ocean-700/40 to-transparent blur-[120px] pointer-events-none" />
+
+      {/* Bright cyan core light */}
+      <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-cyan-400/30 rounded-full blur-[130px] pointer-events-none mix-blend-screen" />
+
+      {/* Deep anchor shadow glow */}
+      <div className="absolute bottom-[-20%] right-[20%] w-[600px] h-[600px] bg-ocean-950/60 rounded-full blur-[150px] pointer-events-none" />
+
+      {/* Left side soft balancing glow */}
+      <div className="absolute top-[30%] left-[-10%] w-[500px] h-[500px] bg-cyan-100/30 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Subtle Noise Texture */}
       <div
-        className="absolute inset-0 opacity-[0.015] pointer-events-none"
+        className="absolute inset-0 opacity-[0.025] pointer-events-none mix-blend-overlay"
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(14,165,233,1) 1px, transparent 1px), linear-gradient(90deg, rgba(14,165,233,1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
         }}
       />
 
       <div className="relative section-container w-full pt-32 pb-20">
-        <div className="max-w-4xl">
-          {/* Intro badge */}
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-ocean-50 border border-ocean-100 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <span className="w-2 h-2 rounded-full bg-ocean-400 animate-pulse-slow" />
-            <span className="text-sm font-medium text-ocean-700">
-              Available for new projects
-            </span>
-          </motion.div>
+        <div className="flex flex-col lg:flex-row items-center lg:items-center gap-8 lg:gap-0">
+          {/* Left side — textual content */}
+          <div className="w-full lg:w-[50%] relative z-10">
 
-          {/* Headline */}
-          <motion.h1
-            className="heading-xl mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Designing experiences
-            <br />
-            <span className="gradient-text">that people love</span>
-          </motion.h1>
+            {/* Headline */}
+            <motion.h1
+              className="heading-xl mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              Designing experiences
+              <br />
+              <span className="gradient-text">that people love</span>
+            </motion.h1>
 
-          {/* Subtitle */}
-          <motion.p
-            className="body-lg max-w-xl mb-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-          >
-            Hi, I&apos;m Shubham Saurabh — a UI/UX Designer specializing in
-            creating intuitive, scalable, and beautiful digital products for
-            SaaS, mobile, and enterprise platforms.
-          </motion.p>
+            {/* Subtitle */}
+            <motion.p
+              className="body-lg max-w-xl mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+            >
+              Hi, I&apos;m Shubham Saurabh — a UI/UX Designer specializing in
+              creating intuitive, scalable, and beautiful digital products for
+              SaaS, mobile, and enterprise platforms.
+            </motion.p>
 
-          {/* CTAs */}
-          <motion.div
-            className="flex flex-wrap items-center gap-4 mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <Button href="#projects" variant="primary" size="lg" icon>
-              View My Work
-            </Button>
-            <Button href="/contact" variant="secondary" size="lg">
-              Get in Touch
-            </Button>
-          </motion.div>
+            {/* CTAs */}
+            <motion.div
+              className="flex flex-wrap items-center gap-4 mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <Button href="#projects" variant="primary" size="lg" icon>
+                View My Work
+              </Button>
+              <Button href="/contact" variant="secondary" size="lg">
+                Get in Touch
+              </Button>
+            </motion.div>
 
-          {/* Stats */}
-          <motion.div
-            className="flex flex-wrap gap-10 md:gap-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.65 }}
-          >
-            {stats.map((stat) => (
-              <div key={stat.label}>
-                <div className="font-display text-3xl md:text-4xl font-bold text-ink-900 mb-1">
-                  {stat.value}
+            {/* Stats */}
+            <motion.div
+              className="flex flex-wrap gap-10 md:gap-16"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.65 }}
+            >
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <div className="font-display text-3xl md:text-4xl font-bold text-ink-900 mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-ink-500">{stat.label}</div>
                 </div>
-                <div className="text-sm text-ink-500">{stat.label}</div>
-              </div>
-            ))}
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Right side — Spline 3D Asset */}
+          <motion.div
+            className="w-full lg:w-[50%] h-[450px] sm:h-[550px] lg:h-[700px] z-0 flex items-center justify-center overflow-visible"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+          >
+            <div
+              className="w-full h-full pointer-events-auto scale-[1.3] lg:scale-[1.4] origin-center"
+              style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 60px), 0 calc(100% - 60px))" }}
+            >
+              <SplineScene scene="https://prod.spline.design/3XpAO7nrx21IihFS/scene.splinecode" />
+            </div>
           </motion.div>
         </div>
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
+          style={{ opacity: scrollOpacity }}
         >
           <span className="text-[11px] text-ink-400 tracking-widest uppercase">
             Scroll
