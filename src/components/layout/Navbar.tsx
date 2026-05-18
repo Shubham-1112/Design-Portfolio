@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
+import { HiOutlineMenuAlt3, HiX, HiOutlineDownload } from "react-icons/hi";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -15,14 +15,7 @@ const navLinks = [
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -39,11 +32,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-white/80 backdrop-blur-xl shadow-elevated border-b border-surface-200/50"
-            : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 bg-white/50 backdrop-blur-md border-b border-white/40 shadow-sm transition-all duration-300"
         role="navigation"
         aria-label="Main navigation"
       >
@@ -99,12 +88,14 @@ export default function Navbar() {
 
             {/* CTA + Mobile toggle */}
             <div className="flex items-center gap-3">
-              <Link
-                href="/contact"
+              <a
+                href="/resume.pdf"
+                download="ShubhamSaurabh-Resume.pdf"
                 className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-gradient-ocean rounded-xl shadow-glass hover:shadow-card-hover transition-all duration-300 hover:-translate-y-0.5"
               >
-                Let&apos;s Talk
-              </Link>
+                Resume
+                <HiOutlineDownload className="w-4 h-4" />
+              </a>
 
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
@@ -177,12 +168,14 @@ export default function Navbar() {
                   transition={{ delay: 0.35 }}
                   className="mt-4"
                 >
-                  <Link
-                    href="/contact"
-                    className="block w-full text-center px-5 py-3 text-sm font-medium text-white bg-gradient-ocean rounded-xl shadow-glass"
+                  <a
+                    href="/resume.pdf"
+                    download="ShubhamSaurabh-Resume.pdf"
+                    className="block w-full text-center px-5 py-3 text-sm font-medium text-white bg-gradient-ocean rounded-xl shadow-glass flex items-center justify-center gap-2"
                   >
-                    Let&apos;s Talk
-                  </Link>
+                    Resume
+                    <HiOutlineDownload className="w-4 h-4" />
+                  </a>
                 </motion.div>
               </div>
             </motion.div>
