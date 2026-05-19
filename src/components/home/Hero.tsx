@@ -66,7 +66,7 @@ export default function Hero() {
 
             {/* Subtitle */}
             <motion.p
-              className="body-lg max-w-xl mb-10 text-white"
+              className="body-lg max-w-xl mb-10 text-white/80"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35 }}
