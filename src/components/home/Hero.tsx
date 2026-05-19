@@ -13,9 +13,9 @@ const SplineScene = dynamic(() => import("./SplineWrapper"), {
 });
 
 const stats = [
-  { value: "8+", label: "Projects Delivered" },
-  { value: "3+", label: "Years Experience" },
-  { value: "100%", label: "Client Satisfaction" },
+  { value: "10+", label: "Projects Delivered" },
+  { value: "2+", label: "Years Experience" },
+  { value: "5", label: "Industry Domains" },
 ];
 
 export default function Hero() {
@@ -61,7 +61,7 @@ export default function Hero() {
             >
               Designing experiences
               <br />
-              <span className="gradient-text">that people love</span>
+              <span className="text-ocean-900">that people love</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -71,9 +71,9 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35 }}
             >
-              Hi, I&apos;m Shubham Saurabh — a UI/UX Designer specializing in
-              creating intuitive, scalable, and beautiful digital products for
-              SaaS, mobile, and enterprise platforms.
+              I craft intuitive, scalable digital products for SaaS, mobile, and
+              enterprise platforms — turning complex problems into experiences
+              users actually enjoy.
             </motion.p>
 
             {/* CTAs */}
