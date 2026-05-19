@@ -61,12 +61,12 @@ export default function Hero() {
             >
               Designing experiences
               <br />
-              <span className="text-ocean-900">that people love</span>
+              <span className="gradient-text">that people love</span>
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p
-              className="body-lg max-w-xl mb-10"
+              className="body-lg !text-ink-200 max-w-xl mb-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35 }}
