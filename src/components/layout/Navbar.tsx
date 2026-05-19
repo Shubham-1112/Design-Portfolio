@@ -81,6 +81,8 @@ export default function Navbar() {
               <a
                 href="/resume.pdf"
                 download="ShubhamSaurabh-Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-gradient-ocean rounded-xl shadow-glass hover:shadow-card-hover transition-all duration-300 hover:-translate-y-0.5"
               >
                 Resume
@@ -161,6 +163,8 @@ export default function Navbar() {
                   <a
                     href="/resume.pdf"
                     download="ShubhamSaurabh-Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full text-center px-5 py-3 text-sm font-medium text-white bg-gradient-ocean rounded-xl shadow-glass flex items-center justify-center gap-2"
                   >
                     Resume
