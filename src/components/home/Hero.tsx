@@ -103,7 +103,7 @@ export default function Hero() {
                   <div className="font-display text-3xl md:text-4xl font-bold text-ink-900 mb-1">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-ink-500">{stat.label}</div>
+                  <div className="text-sm text-white/80">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
