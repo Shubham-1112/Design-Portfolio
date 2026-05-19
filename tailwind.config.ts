@@ -43,6 +43,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         display: ["var(--font-outfit)", "system-ui", "sans-serif"],
+        signature: ["var(--font-signature)", "serif"],
       },
       backgroundImage: {
         "gradient-ocean":

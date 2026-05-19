@@ -39,20 +39,10 @@ export default function Navbar() {
         <div className="section-container">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group" aria-label="Home">
-              <div className="w-10 h-10 rounded-xl bg-gradient-ocean flex items-center justify-center shadow-glass transition-transform duration-300 group-hover:scale-105">
-                <span className="text-white font-display text-lg font-bold">
-                  S
-                </span>
-              </div>
-              <div className="hidden sm:block">
-                <span className="font-display font-semibold text-ink-900 text-sm">
-                  Shubham
-                </span>
-                <span className="block text-[11px] text-ink-500 tracking-wider uppercase -mt-0.5">
-                  UI/UX Designer
-                </span>
-              </div>
+            <Link href="/" className="flex items-center group" aria-label="Home">
+              <span className="font-signature italic text-lg sm:text-xl font-medium tracking-wide text-ink-900 transition-all duration-300 group-hover:text-ocean-500">
+                shubham saurabh
+              </span>
             </Link>
 
             {/* Desktop nav */}

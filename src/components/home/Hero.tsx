@@ -47,10 +47,10 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative section-container pr-0 sm:pr-0 lg:pr-0 w-full pt-32 pb-20">
+      <div className="relative w-full max-w-none px-0 sm:max-w-7xl sm:mx-auto sm:px-8 sm:pr-0 lg:px-12 lg:pr-0 pt-32 pb-20">
         <div className="flex flex-col-reverse sm:flex-row items-center gap-8 sm:gap-0">
           {/* Left side — textual content */}
-          <div className="w-full sm:w-[50%] relative z-10">
+          <div className="w-full sm:w-[50%] px-6 sm:px-0 relative z-10">
 
             {/* Headline */}
             <motion.h1
@@ -111,13 +111,13 @@ export default function Hero() {
 
           {/* Right side — Spline 3D Asset */}
           <motion.div
-            className="w-full sm:w-[50%] h-[340px] sm:h-[480px] lg:h-[600px] z-0 flex items-center justify-center overflow-hidden relative"
+            className="w-full sm:w-[50%] h-[600px] z-0 flex items-center justify-center overflow-hidden relative"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
           >
             <div
-              className="absolute w-[600px] h-[600px] sm:w-[825px] sm:h-[825px] lg:w-[1050px] lg:h-[1050px] top-1/2 left-1/2 -translate-x-[54%] -translate-y-1/2 pointer-events-auto scale-[0.55] sm:scale-[0.6] md:scale-[0.65] lg:scale-[0.67] origin-center flex items-center justify-center [&>div]:w-full [&>div]:h-full [&_a]:!hidden [&_#logo]:!hidden"
+              className="absolute w-[1050px] h-[1050px] top-1/2 left-1/2 -translate-x-[54%] -translate-y-1/2 pointer-events-auto scale-[0.67] origin-center flex items-center justify-center [&>div]:w-full [&>div]:h-full [&_a]:!hidden [&_#logo]:!hidden"
             >
               <SplineScene scene="https://prod.spline.design/03USCTROg4TrNTtL/scene.splinecode" />
             </div>
