@@ -54,19 +54,19 @@ export default function Hero() {
 
             {/* Headline */}
             <motion.h1
-              className="heading-xl mb-6"
+              className="heading-xl mb-6 !text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               Designing experiences
               <br />
-              <span className="text-ocean-900">that people love</span>
+              <span className="!text-ocean-200">that people love</span>
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p
-              className="body-lg max-w-xl mb-10 text-white/80"
+              className="body-lg max-w-xl mb-10 !text-white/90"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35 }}
@@ -100,10 +100,10 @@ export default function Hero() {
             >
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <div className="font-display text-3xl md:text-4xl font-bold text-ink-900 mb-1">
+                  <div className="font-display text-3xl md:text-4xl font-bold !text-white mb-1">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-white/80">{stat.label}</div>
+                  <div className="text-sm !text-white/70">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
