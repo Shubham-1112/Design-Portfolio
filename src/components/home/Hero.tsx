@@ -27,17 +27,17 @@ export default function Hero() {
       {/* Premium Atmospheric Background */}
       <div className="absolute inset-0 bg-surface-50 pointer-events-none" />
 
-      {/* Right side deep atmospheric glow */}
+      {/* Symmetric Deep Atmospheric Glows */}
       <div className="absolute top-[-10%] right-[-5%] w-[80%] h-[120%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-ocean-900/90 via-ocean-700/40 to-transparent blur-[120px] pointer-events-none" />
+      <div className="absolute top-[-10%] left-[-5%] w-[80%] h-[120%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-ocean-900/90 via-ocean-700/40 to-transparent blur-[120px] pointer-events-none" />
 
-      {/* Bright cyan core light */}
+      {/* Symmetric Bright Cyan Core Lights */}
       <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-cyan-400/30 rounded-full blur-[130px] pointer-events-none mix-blend-screen" />
+      <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-cyan-400/30 rounded-full blur-[130px] pointer-events-none mix-blend-screen" />
 
-      {/* Deep anchor shadow glow */}
+      {/* Symmetric Deep Anchor Shadow Glows */}
       <div className="absolute bottom-[-20%] right-[20%] w-[600px] h-[600px] bg-ocean-950/60 rounded-full blur-[150px] pointer-events-none" />
-
-      {/* Left side soft balancing glow */}
-      <div className="absolute top-[30%] left-[-10%] w-[500px] h-[500px] bg-cyan-100/30 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] bg-ocean-950/60 rounded-full blur-[150px] pointer-events-none" />
 
       {/* Subtle Noise Texture */}
       <div
