@@ -47,10 +47,10 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative section-container w-full pt-32 pb-20">
-        <div className="flex flex-col lg:flex-row items-center lg:items-center gap-8 lg:gap-0">
+      <div className="relative section-container pr-0 sm:pr-0 lg:pr-0 w-full pt-32 pb-20">
+        <div className="flex flex-col-reverse sm:flex-row items-center gap-8 sm:gap-0">
           {/* Left side — textual content */}
-          <div className="w-full lg:w-[50%] relative z-10">
+          <div className="w-full sm:w-[50%] relative z-10">
 
             {/* Headline */}
             <motion.h1
@@ -111,16 +111,15 @@ export default function Hero() {
 
           {/* Right side — Spline 3D Asset */}
           <motion.div
-            className="w-full lg:w-[50%] h-[450px] sm:h-[550px] lg:h-[700px] z-0 flex items-center justify-center overflow-visible"
+            className="w-full sm:w-[50%] h-[340px] sm:h-[480px] lg:h-[600px] z-0 flex items-center justify-center overflow-hidden relative"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
           >
             <div
-              className="w-full h-full pointer-events-auto scale-[1.3] lg:scale-[1.4] origin-center"
-              style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 60px), 0 calc(100% - 60px))" }}
+              className="absolute w-[600px] h-[600px] sm:w-[825px] sm:h-[825px] lg:w-[1050px] lg:h-[1050px] top-1/2 left-1/2 -translate-x-[54%] -translate-y-1/2 pointer-events-auto scale-[0.55] sm:scale-[0.6] md:scale-[0.65] lg:scale-[0.67] origin-center flex items-center justify-center [&>div]:w-full [&>div]:h-full [&_a]:!hidden [&_#logo]:!hidden"
             >
-              <SplineScene scene="https://prod.spline.design/3XpAO7nrx21IihFS/scene.splinecode" />
+              <SplineScene scene="https://prod.spline.design/03USCTROg4TrNTtL/scene.splinecode" />
             </div>
           </motion.div>
         </div>
