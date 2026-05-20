@@ -13,9 +13,9 @@ const SplineScene = dynamic(() => import("./SplineWrapper"), {
 });
 
 const stats = [
-  { value: "8+", label: "Projects Delivered" },
-  { value: "3+", label: "Years Experience" },
-  { value: "100%", label: "Client Satisfaction" },
+  { value: "10+", label: "Projects Delivered" },
+  { value: "2+", label: "Years Experience" },
+  { value: "5", label: "Industry Domains" },
 ];
 
 export default function Hero() {
@@ -27,17 +27,17 @@ export default function Hero() {
       {/* Premium Atmospheric Background */}
       <div className="absolute inset-0 bg-surface-50 pointer-events-none" />
 
-      {/* Right side deep atmospheric glow */}
+      {/* Symmetric Deep Atmospheric Glows */}
       <div className="absolute top-[-10%] right-[-5%] w-[80%] h-[120%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-ocean-900/90 via-ocean-700/40 to-transparent blur-[120px] pointer-events-none" />
+      <div className="absolute top-[-10%] left-[-5%] w-[80%] h-[120%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-ocean-900/90 via-ocean-700/40 to-transparent blur-[120px] pointer-events-none" />
 
-      {/* Bright cyan core light */}
+      {/* Symmetric Bright Cyan Core Lights */}
       <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-cyan-400/30 rounded-full blur-[130px] pointer-events-none mix-blend-screen" />
+      <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-cyan-400/30 rounded-full blur-[130px] pointer-events-none mix-blend-screen" />
 
-      {/* Deep anchor shadow glow */}
+      {/* Symmetric Deep Anchor Shadow Glows */}
       <div className="absolute bottom-[-20%] right-[20%] w-[600px] h-[600px] bg-ocean-950/60 rounded-full blur-[150px] pointer-events-none" />
-
-      {/* Left side soft balancing glow */}
-      <div className="absolute top-[30%] left-[-10%] w-[500px] h-[500px] bg-cyan-100/30 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] bg-ocean-950/60 rounded-full blur-[150px] pointer-events-none" />
 
       {/* Subtle Noise Texture */}
       <div
@@ -54,26 +54,26 @@ export default function Hero() {
 
             {/* Headline */}
             <motion.h1
-              className="heading-xl mb-6"
+              className="heading-xl mb-6 !text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               Designing experiences
               <br />
-              <span className="gradient-text">that people love</span>
+              <span className="!text-ocean-200">that people love</span>
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p
-              className="body-lg max-w-xl mb-10"
+              className="body-lg max-w-xl mb-10 !text-white/90"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35 }}
             >
-              Hi, I&apos;m Shubham Saurabh — a UI/UX Designer specializing in
-              creating intuitive, scalable, and beautiful digital products for
-              SaaS, mobile, and enterprise platforms.
+              I craft intuitive, scalable digital products for SaaS, mobile, and
+              enterprise platforms — turning complex problems into experiences
+              users actually enjoy.
             </motion.p>
 
             {/* CTAs */}
@@ -100,10 +100,10 @@ export default function Hero() {
             >
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <div className="font-display text-3xl md:text-4xl font-bold text-ink-900 mb-1">
+                  <div className="font-display text-3xl md:text-4xl font-bold !text-white mb-1">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-ink-500">{stat.label}</div>
+                  <div className="text-sm !text-white/70">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
