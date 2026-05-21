@@ -7,9 +7,24 @@ export interface Project {
   category: string;
   color: string;
   icon: string;
+  image?: string;
+  gallery?: string[];
 }
 
 export const projects: Project[] = [
+  {
+    id: "cpaas-platform",
+    title: "CPaaS Communication Platform",
+    subtitle: "Cloud Communication Suite",
+    description:
+      "A robust Communications Platform as a Service enabling businesses to integrate voice, video, messaging, and authentication APIs into their applications seamlessly.",
+    tags: ["SaaS Design", "API Platform", "Design System", "Enterprise"],
+    category: "SaaS",
+    color: "#06b6d4",
+    icon: "📡",
+    image: "/projects/cpaas-1.webp",
+    gallery: ["/projects/cpaas/1.webp", "/projects/cpaas/2.jpg", "/projects/cpaas/3.webp"],
+  },
   {
     id: "dataflow-pro",
     title: "DataFlow Pro",
@@ -20,6 +35,8 @@ export const projects: Project[] = [
     category: "SaaS",
     color: "#0ea5e9",
     icon: "📊",
+    image: "/projects/dataflow-1.webp",
+    gallery: Array.from({ length: 25 }, (_, i) => `/projects/dataflow/${i + 1}.webp`),
   },
   {
     id: "healthcare-fitness",
@@ -31,28 +48,8 @@ export const projects: Project[] = [
     category: "Mobile",
     color: "#10b981",
     icon: "🏥",
-  },
-  {
-    id: "event-management",
-    title: "Event Management Platform",
-    subtitle: "End-to-End Event Solution",
-    description:
-      "A streamlined platform for planning, managing, and executing events. Features include ticketing, attendee management, vendor coordination, and real-time analytics.",
-    tags: ["Web Platform", "Event Tech", "Responsive Design", "UI Design"],
-    category: "Web",
-    color: "#8b5cf6",
-    icon: "🎪",
-  },
-  {
-    id: "virtual-venue",
-    title: "Virtual Venue Booking",
-    subtitle: "Smart Space Reservation System",
-    description:
-      "An innovative booking platform that enables users to explore, compare, and reserve event venues through immersive virtual tours and smart filtering capabilities.",
-    tags: ["Booking System", "3D/VR", "Product Design", "UI/UX"],
-    category: "Web",
-    color: "#f59e0b",
-    icon: "🏛️",
+    image: "/projects/healthcare-1.webp",
+    gallery: Array.from({ length: 11 }, (_, i) => `/projects/healthcare/${i + 1}.webp`),
   },
   {
     id: "habit-tracker",
@@ -64,17 +61,21 @@ export const projects: Project[] = [
     category: "Mobile",
     color: "#ec4899",
     icon: "🐾",
+    image: "/projects/habit-tracker-1.webp",
+    gallery: Array.from({ length: 9 }, (_, i) => `/projects/habit-tracker/${i + 1}.webp`),
   },
   {
-    id: "cpaas-platform",
-    title: "CPaaS Communication Platform",
-    subtitle: "Cloud Communication Suite",
+    id: "virtual-venue",
+    title: "Virtual Venue Booking",
+    subtitle: "Smart Space Reservation System",
     description:
-      "A robust Communications Platform as a Service enabling businesses to integrate voice, video, messaging, and authentication APIs into their applications seamlessly.",
-    tags: ["SaaS Design", "API Platform", "Design System", "Enterprise"],
-    category: "SaaS",
-    color: "#06b6d4",
-    icon: "📡",
+      "An innovative booking platform that enables users to explore, compare, and reserve event venues through immersive virtual tours and smart filtering capabilities.",
+    tags: ["Booking System", "3D/VR", "Product Design", "UI/UX"],
+    category: "Web",
+    color: "#f59e0b",
+    icon: "🏛️",
+    image: "/projects/virtual-venue-1.webp",
+    gallery: Array.from({ length: 31 }, (_, i) => `/projects/virtual-venue/${i + 1}.webp`),
   },
   {
     id: "ai-chatbot",
@@ -108,3 +109,4 @@ export const categories = [
   "AI",
   "Enterprise",
 ];
+
