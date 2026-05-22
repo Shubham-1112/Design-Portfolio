@@ -13,7 +13,7 @@ const SplineScene = dynamic(() => import("./SplineWrapper"), {
 });
 
 const stats = [
-  { value: "10+", label: "Projects Delivered" },
+  { value: "14+", label: "Projects Delivered" },
   { value: "2+", label: "Years Experience" },
   { value: "5", label: "Industry Domains" },
 ];
