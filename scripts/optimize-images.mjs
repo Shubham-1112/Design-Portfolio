@@ -10,6 +10,8 @@ const images = [
   { input: 'dataflow-1.png', output: 'dataflow-1.webp' },
   { input: 'healthcare-1.png', output: 'healthcare-1.webp' },
   { input: 'habit-tracker-1.jpg', output: 'habit-tracker-1.webp' },
+  { input: 'brand-guideline-1.png', output: 'brand-guideline-1.webp' },
+  { input: 'natural-icecream-1.png', output: 'natural-icecream-1.webp' },
   { input: 'virtual-venue-1.jpg', output: 'virtual-venue-1.webp' },
 ];
 

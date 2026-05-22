@@ -15,7 +15,7 @@ export default function ProjectsGrid() {
   const filteredProjects =
     activeCategory === "All"
       ? projects
-      : projects.filter((p) => p.category === activeCategory);
+      : projects.filter((p) => p.category.includes(activeCategory));
 
   return (
     <section className="section-padding bg-surface-50" id="projects">
