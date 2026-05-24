@@ -18,9 +18,6 @@ export default function ScrollReveal({
   direction = "up",
   duration = 0.6,
 }: ScrollRevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
-
   const directionOffset = {
     up: { y: 30 },
     down: { y: -30 },
@@ -30,14 +27,10 @@ export default function ScrollReveal({
 
   return (
     <motion.div
-      ref={ref}
       className={className}
       initial={{ opacity: 0, ...directionOffset[direction] }}
-      animate={
-        isInView
-          ? { opacity: 1, x: 0, y: 0 }
-          : { opacity: 0, ...directionOffset[direction] }
-      }
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
       transition={{
         duration,
         delay,
