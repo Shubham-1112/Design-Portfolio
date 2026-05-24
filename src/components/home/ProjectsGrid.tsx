@@ -1,16 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useId } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import ProjectCard from "./ProjectCard";
-import ProjectModal from "./ProjectModal";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { projects, categories } from "@/data/projects";
 import type { Project } from "@/data/projects";
 
 export default function ProjectsGrid() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const router = useRouter();
+  const componentId = useId();
 
   const filteredProjects =
     activeCategory === "All"
@@ -40,7 +41,7 @@ export default function ProjectsGrid() {
             >
               {activeCategory === cat && (
                 <motion.div
-                  layoutId="category-bg"
+                  layoutId={`${componentId}-category-bg`}
                   className="absolute inset-0 rounded-full bg-gradient-ocean shadow-glass"
                   transition={{
                     type: "spring",
@@ -64,16 +65,14 @@ export default function ProjectsGrid() {
               key={project.id}
               project={project}
               index={i}
-              onClick={() => project.gallery && setSelectedProject(project)}
+              onClick={() => {
+                if (project.gallery && project.gallery.length > 0) {
+                  router.push(`/project/${project.id}`);
+                }
+              }}
             />
           ))}
         </motion.div>
-
-        {/* Project portfolio modal */}
-        <ProjectModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
       </div>
     </section>
   );

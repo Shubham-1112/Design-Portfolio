@@ -12,16 +12,12 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, index, onClick }: ProjectCardProps) {
   return (
     <motion.article
+      layout
       className="group relative bg-white rounded-2xl border border-surface-200 overflow-hidden transition-all duration-500 hover:shadow-card-hover hover:border-ocean-200 hover:-translate-y-1 cursor-pointer"
       onClick={onClick}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.08,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
     >
       {/* Thumbnail area — will-change promotes to GPU layer for smooth hover */}
       <div className="relative h-52 sm:h-56 overflow-hidden bg-gradient-ocean-subtle will-change-transform">

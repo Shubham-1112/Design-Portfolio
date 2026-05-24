@@ -143,7 +143,7 @@ export const projects: Project[] = [
     description:
       "An AI-driven SaaS platform built for tax and compliance professionals to streamline notice analysis, workflow tracking, document management, and intelligent response generation.",
     tags: ["AI SaaS", "Fintech", "Compliance", "Workflow"],
-    category: ["Mobile", "AI", "SaaS"],
+    category: ["Web", "AI", "SaaS"],
     color: "#059669",
     icon: "💼",
   },
