@@ -1,10 +1,9 @@
 "use client";
 
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import dynamic from "next/dynamic";
 import Button from "@/components/ui/Button";
 import { HiOutlineArrowDown } from "react-icons/hi";
-import { useRef } from "react";
 
 const SplineScene = dynamic(() => import("./SplineWrapper"), {
   ssr: false,
@@ -22,8 +21,6 @@ const stats = [
 export default function Hero() {
   const { scrollY } = useScroll();
   const scrollOpacity = useTransform(scrollY, [0, 150], [1, 0]);
-  const splineContainerRef = useRef<HTMLDivElement>(null);
-  const isSplineInView = useInView(splineContainerRef, { once: true, margin: "200px" });
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -114,7 +111,6 @@ export default function Hero() {
 
           {/* Right side — Spline 3D Asset */}
           <motion.div
-            ref={splineContainerRef}
             className="w-full sm:w-[50%] h-[600px] z-0 flex items-center justify-center overflow-hidden relative"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -123,7 +119,7 @@ export default function Hero() {
             <div
               className="absolute w-[1050px] h-[1050px] top-1/2 left-1/2 -translate-x-[54%] -translate-y-1/2 pointer-events-auto scale-[0.67] origin-center flex items-center justify-center [&>div]:w-full [&>div]:h-full [&_a]:!hidden [&_#logo]:!hidden"
             >
-              {isSplineInView && <SplineScene scene="https://prod.spline.design/03USCTROg4TrNTtL/scene.splinecode" />}
+              <SplineScene scene="https://prod.spline.design/03USCTROg4TrNTtL/scene.splinecode" />
             </div>
           </motion.div>
         </div>
