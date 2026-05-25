@@ -11,8 +11,8 @@ import { FaLinkedinIn, FaBehance, FaInstagram, FaGithub } from "react-icons/fa";
 
 const footerLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
   { href: "/experience", label: "Experience" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
