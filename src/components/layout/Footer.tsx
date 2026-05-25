@@ -5,8 +5,9 @@ import {
   HiOutlineMail,
   HiOutlineLocationMarker,
   HiOutlineArrowUp,
+  HiOutlinePhone,
 } from "react-icons/hi";
-import { FaLinkedinIn, FaDribbble, FaBehance } from "react-icons/fa";
+import { FaLinkedinIn, FaBehance, FaInstagram, FaGithub } from "react-icons/fa";
 
 const footerLinks = [
   { href: "/", label: "Home" },
@@ -21,8 +22,9 @@ const socialLinks = [
     icon: FaLinkedinIn,
     label: "LinkedIn",
   },
-  { href: "#", icon: FaDribbble, label: "Dribbble" },
-  { href: "#", icon: FaBehance, label: "Behance" },
+  { href: "https://www.behance.net/shubhamsaurabh1", icon: FaBehance, label: "Behance" },
+  { href: "https://www.instagram.com/_shubham_saurabh_?igsh=MW1qYWlpbGV5em1uNw==", icon: FaInstagram, label: "Instagram" },
+  { href: "https://github.com/Shubham-1112", icon: FaGithub, label: "GitHub" },
 ];
 
 export default function Footer() {
@@ -92,9 +94,18 @@ export default function Footer() {
                     shubhamsaurabh1000@gmail.com
                   </a>
                 </li>
+                <li>
+                  <a
+                    href="tel:+916201389298"
+                    className="flex items-center gap-2.5 text-sm text-ink-300 hover:text-white transition-colors"
+                  >
+                    <HiOutlinePhone className="w-4 h-4 text-ocean-400" />
+                    +91 6201389298
+                  </a>
+                </li>
                 <li className="flex items-center gap-2.5 text-sm text-ink-300">
                   <HiOutlineLocationMarker className="w-4 h-4 text-ocean-400" />
-                  Bihar, India
+                  Gurgaon, India
                 </li>
               </ul>
 
