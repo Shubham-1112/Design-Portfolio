@@ -6,8 +6,9 @@ import {
   HiOutlineLocationMarker,
   HiOutlineDownload,
   HiOutlineExternalLink,
+  HiOutlinePhone,
 } from "react-icons/hi";
-import { FaLinkedinIn, FaDribbble, FaBehance } from "react-icons/fa";
+import { FaLinkedinIn, FaBehance, FaInstagram, FaGithub } from "react-icons/fa";
 
 const contactDetails = [
   {
@@ -17,9 +18,15 @@ const contactDetails = [
     href: "mailto:shubhamsaurabh1000@gmail.com",
   },
   {
+    icon: HiOutlinePhone,
+    label: "Phone",
+    value: "+91 6201389298",
+    href: "tel:+916201389298",
+  },
+  {
     icon: HiOutlineLocationMarker,
     label: "Location",
-    value: "Bihar, India",
+    value: "Gurgaon, India",
     href: null,
   },
 ];
@@ -32,16 +39,22 @@ const socialLinks = [
     color: "#0077B5",
   },
   {
-    icon: FaDribbble,
-    label: "Dribbble",
-    href: "#",
-    color: "#EA4C89",
-  },
-  {
     icon: FaBehance,
     label: "Behance",
-    href: "#",
+    href: "https://www.behance.net/shubhamsaurabh1",
     color: "#1769FF",
+  },
+  {
+    icon: FaInstagram,
+    label: "Instagram",
+    href: "https://www.instagram.com/_shubham_saurabh_?igsh=MW1qYWlpbGV5em1uNw==",
+    color: "#E1306C",
+  },
+  {
+    icon: FaGithub,
+    label: "GitHub",
+    href: "https://github.com/Shubham-1112",
+    color: "#333333",
   },
 ];
 
@@ -120,7 +133,10 @@ export default function ContactInfo() {
             skills.
           </p>
           <a
-            href="#"
+            href="/resume.pdf"
+            download="ShubhamSaurabh-Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-gradient-ocean rounded-xl shadow-glass hover:shadow-card-hover transition-all duration-300 hover:-translate-y-0.5"
           >
             <HiOutlineDownload className="w-4 h-4" />
@@ -133,7 +149,7 @@ export default function ContactInfo() {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
               <HiOutlineLocationMarker className="w-8 h-8 text-ocean-400 mx-auto mb-2" />
-              <p className="text-sm font-medium text-ink-500">Bihar, India</p>
+              <p className="text-sm font-medium text-ink-500">Gurgaon, India</p>
               <p className="text-xs text-ink-400 mt-1">Remote-friendly</p>
             </div>
           </div>

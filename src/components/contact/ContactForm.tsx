@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { HiOutlineCheckCircle } from "react-icons/hi";
+import { HiOutlineCheckCircle, HiOutlineChevronDown, HiOutlineExclamationCircle } from "react-icons/hi";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -15,6 +15,7 @@ export default function ContactForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -23,23 +24,59 @@ export default function ContactForm() {
       ...prev,
       [e.target.name]: e.target.value,
     }));
+    // Clear error when user starts typing
+    if (errorMessage) setErrorMessage("");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage("");
+
+    // Client-side validation: name, email, and message are mandatory
+    if (!formData.name.trim()) {
+      setErrorMessage("Please enter your full name.");
+      return;
+    }
+    if (!formData.email.trim()) {
+      setErrorMessage("Please enter your email address.");
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email.trim())) {
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+    if (!formData.message.trim()) {
+      setErrorMessage("Please enter your message.");
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      const result = await response.json();
 
-    // Reset after 5 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 5000);
+      if (result.success) {
+        setIsSubmitted(true);
+        // Reset after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({ name: "", email: "", subject: "", message: "" });
+        }, 5000);
+      } else {
+        setErrorMessage(result.error || "Failed to send message. Please try again.");
+      }
+    } catch {
+      setErrorMessage("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -72,20 +109,32 @@ export default function ContactForm() {
           Fill out the form below and I&apos;ll respond within 24 hours.
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+          {/* Error banner */}
+          {errorMessage && (
+            <motion.div
+              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-sm text-red-700"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25 }}
+            >
+              <HiOutlineExclamationCircle className="w-5 h-5 flex-shrink-0 text-red-500" />
+              {errorMessage}
+            </motion.div>
+          )}
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
               <label
                 htmlFor="name"
                 className="block text-sm font-medium text-ink-700 mb-1.5"
               >
-                Full Name
+                Full Name <span className="text-red-400">*</span>
               </label>
               <input
                 type="text"
                 id="name"
                 name="name"
-                required
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="John Doe"
@@ -97,13 +146,12 @@ export default function ContactForm() {
                 htmlFor="email"
                 className="block text-sm font-medium text-ink-700 mb-1.5"
               >
-                Email Address
+                Email Address <span className="text-red-400">*</span>
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                required
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="john@example.com"
@@ -119,20 +167,24 @@ export default function ContactForm() {
             >
               Subject
             </label>
-            <select
-              id="subject"
-              name="subject"
-              required
-              value={formData.subject}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-xl border border-surface-300 bg-surface-50 text-ink-800 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-400 focus:border-transparent transition-all duration-200"
-            >
-              <option value="">Select a topic</option>
-              <option value="project">New Project Inquiry</option>
-              <option value="collaboration">Design Collaboration</option>
-              <option value="freelance">Freelance Opportunity</option>
-              <option value="general">General Inquiry</option>
-            </select>
+            <div className="relative">
+              <select
+                id="subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                className="appearance-none w-full pl-4 pr-12 py-3 rounded-xl border border-surface-300 bg-surface-50 text-ink-800 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-400 focus:border-transparent transition-all duration-200"
+              >
+                <option value="">Select a topic</option>
+                <option value="New Project Inquiry">New Project Inquiry</option>
+                <option value="Design Collaboration">Design Collaboration</option>
+                <option value="Freelance Opportunity">Freelance Opportunity</option>
+                <option value="General Inquiry">General Inquiry</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-ink-500">
+                <HiOutlineChevronDown className="w-5 h-5" />
+              </div>
+            </div>
           </div>
 
           <div>
@@ -140,12 +192,11 @@ export default function ContactForm() {
               htmlFor="message"
               className="block text-sm font-medium text-ink-700 mb-1.5"
             >
-              Message
+              Message <span className="text-red-400">*</span>
             </label>
             <textarea
               id="message"
               name="message"
-              required
               rows={5}
               value={formData.message}
               onChange={handleChange}

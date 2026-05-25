@@ -40,7 +40,7 @@ export default function AboutHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
           >
-            I&apos;m Shubham Saurabh, a UI/UX Designer based in Bihar, India. 
+            I&apos;m Shubham Saurabh, a UI/UX Designer based in Gurgaon, India. 
             I believe in the power of thoughtful design to solve real problems. 
             My journey spans enterprise SaaS platforms, mobile applications, 
             and complex systems — always with a focus on making technology 

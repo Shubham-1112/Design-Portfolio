@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import type { Project } from "@/data/projects";
 
 interface ProjectCardProps {
@@ -23,12 +24,12 @@ export default function ProjectCard({ project, index, onClick }: ProjectCardProp
       <div className="relative h-52 sm:h-56 overflow-hidden bg-gradient-ocean-subtle will-change-transform">
         {project.image ? (
           /* Project screenshot */
-          <img
+          <Image
             src={project.image}
             alt={project.title}
-            loading="lazy"
-            decoding="async"
-            className="absolute inset-0 w-full h-full object-cover object-top transform-gpu group-hover:scale-105 transition-transform duration-700 ease-out"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover object-top transform-gpu group-hover:scale-105 transition-transform duration-700 ease-out"
           />
         ) : (
           <>
