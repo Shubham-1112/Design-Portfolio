@@ -8,8 +8,8 @@ import { HiOutlineMenuAlt3, HiX, HiOutlineDownload } from "react-icons/hi";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
   { href: "/experience", label: "Experience" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
