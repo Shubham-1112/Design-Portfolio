@@ -54,10 +54,25 @@ export default function ContactForm() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/contact", {
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+      if (!accessKey) {
+        setErrorMessage("Form configuration error. Please contact directly via email.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          subject: formData.subject ? formData.subject.trim() : "Portfolio Contact Form",
+          message: formData.message.trim(),
+          from_name: "Portfolio Contact Form",
+          replyto: formData.email.trim(),
+        }),
       });
 
       const result = await response.json();
@@ -70,7 +85,7 @@ export default function ContactForm() {
           setFormData({ name: "", email: "", subject: "", message: "" });
         }, 5000);
       } else {
-        setErrorMessage(result.error || "Failed to send message. Please try again.");
+        setErrorMessage("Failed to send message. Please try again.");
       }
     } catch {
       setErrorMessage("Network error. Please check your connection and try again.");
