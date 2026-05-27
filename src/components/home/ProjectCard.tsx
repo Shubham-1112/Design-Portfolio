@@ -13,8 +13,7 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, index, onClick }: ProjectCardProps) {
   return (
     <motion.article
-      layout
-      className="group relative bg-white rounded-2xl border border-surface-200 overflow-hidden transition-all duration-500 hover:shadow-card-hover hover:border-ocean-200 hover:-translate-y-1 cursor-pointer"
+      className="group relative bg-white rounded-2xl border border-surface-200 overflow-hidden transition-all duration-500 hover:shadow-card-hover hover:border-ocean-200 hover:-translate-y-1 cursor-pointer transform-gpu [backface-visibility:hidden]"
       onClick={onClick}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -30,6 +29,7 @@ export default function ProjectCard({ project, index, onClick }: ProjectCardProp
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover object-top transform-gpu group-hover:scale-105 transition-transform duration-700 ease-out"
+            {...(index < 3 ? { priority: true } : index < 6 ? { loading: "eager" as const } : {})}
           />
         ) : (
           <>

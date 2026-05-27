@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import dynamic from "next/dynamic";
+import { useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
 import { HiOutlineArrowDown } from "react-icons/hi";
 
@@ -22,30 +23,46 @@ export default function Hero() {
   const { scrollY } = useScroll();
   const scrollOpacity = useTransform(scrollY, [0, 150], [1, 0]);
 
+  // Mobile detection — skip Spline WebGL on phones
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(
+      window.innerWidth < 768 ||
+      (typeof navigator !== 'undefined' && /Mobi|Android/i.test(navigator.userAgent))
+    );
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Premium Atmospheric Background */}
       <div className="absolute inset-0 bg-surface-50 pointer-events-none" />
 
-      {/* Symmetric Deep Atmospheric Glows */}
-      <div className="absolute top-[-10%] right-[-5%] w-[80%] h-[120%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-ocean-900/90 via-ocean-700/40 to-transparent blur-[120px] pointer-events-none" />
-      <div className="absolute top-[-10%] left-[-5%] w-[80%] h-[120%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-ocean-900/90 via-ocean-700/40 to-transparent blur-[120px] pointer-events-none" />
+      {/* GPU-isolated background layer — prevents repaint on scroll */}
+      <div className="absolute inset-0 will-change-transform [transform:translateZ(0)] [contain:paint] [isolation:isolate] pointer-events-none">
+        {/* Symmetric Deep Atmospheric Glows */}
+        <div className="absolute top-[-10%] right-[-5%] w-[80%] h-[120%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-ocean-900/90 via-ocean-700/40 to-transparent blur-[120px] pointer-events-none" style={{ transform: 'translateZ(0)', willChange: 'transform' }} />
+        <div className="absolute top-[-10%] left-[-5%] w-[80%] h-[120%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-ocean-900/90 via-ocean-700/40 to-transparent blur-[120px] pointer-events-none" style={{ transform: 'translateZ(0)', willChange: 'transform' }} />
 
-      {/* Symmetric Bright Cyan Core Lights */}
-      <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-cyan-400/30 rounded-full blur-[130px] pointer-events-none mix-blend-screen" />
-      <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-cyan-400/30 rounded-full blur-[130px] pointer-events-none mix-blend-screen" />
+        {/* Symmetric Bright Cyan Core Lights */}
+        <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-cyan-400/30 rounded-full blur-[130px] pointer-events-none mix-blend-screen" style={{ transform: 'translateZ(0)', willChange: 'transform' }} />
+        <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-cyan-400/30 rounded-full blur-[130px] pointer-events-none mix-blend-screen" style={{ transform: 'translateZ(0)', willChange: 'transform' }} />
 
-      {/* Symmetric Deep Anchor Shadow Glows */}
-      <div className="absolute bottom-[-20%] right-[20%] w-[600px] h-[600px] bg-ocean-950/60 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] bg-ocean-950/60 rounded-full blur-[150px] pointer-events-none" />
+        {/* Symmetric Deep Anchor Shadow Glows */}
+        <div className="absolute bottom-[-20%] right-[20%] w-[600px] h-[600px] bg-ocean-950/60 rounded-full blur-[150px] pointer-events-none" style={{ transform: 'translateZ(0)', willChange: 'transform' }} />
+        <div className="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] bg-ocean-950/60 rounded-full blur-[150px] pointer-events-none" style={{ transform: 'translateZ(0)', willChange: 'transform' }} />
 
-      {/* Subtle Noise Texture */}
-      <div
-        className="absolute inset-0 opacity-[0.025] pointer-events-none mix-blend-overlay"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
-        }}
-      />
+        {/* Subtle Noise Texture */}
+        <div
+          className="absolute inset-0 opacity-[0.025] pointer-events-none mix-blend-overlay will-change-transform"
+          style={{
+            transform: 'translateZ(0)',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+          }}
+        />
+      </div>
 
       <div className="relative w-full max-w-none px-0 sm:max-w-7xl sm:mx-auto sm:px-8 sm:pr-0 lg:px-12 lg:pr-0 pt-32 pb-20">
         <div className="flex flex-col-reverse sm:flex-row items-center gap-8 sm:gap-0">
@@ -83,7 +100,15 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <Button href="#projects" variant="primary" size="lg" icon>
+              <Button 
+                href="#projects" 
+                variant="primary" 
+                size="lg" 
+                onClick={(e: React.MouseEvent) => {
+                  e.preventDefault();
+                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 View My Work
               </Button>
               <Button href="/contact" variant="secondary" size="lg">
@@ -119,7 +144,17 @@ export default function Hero() {
             <div
               className="absolute w-[1050px] h-[1050px] top-1/2 left-1/2 -translate-x-1/2 sm:-translate-x-[54%] -translate-y-1/2 pointer-events-auto scale-[0.67] origin-center flex items-center justify-center [&>div]:w-full [&>div]:h-full [&_a]:!hidden [&_#logo]:!hidden"
             >
-              <SplineScene scene="https://prod.spline.design/03USCTROg4TrNTtL/scene.splinecode" />
+              {isMobile ? (
+                <div
+                  className="w-full h-full"
+                  style={{
+                    background: "radial-gradient(circle at 50% 50%, rgba(186,230,253,0.35) 0%, rgba(14,165,233,0.15) 35%, transparent 70%)",
+                  }}
+                  aria-hidden="true"
+                />
+              ) : (
+                <SplineScene scene="https://prod.spline.design/03USCTROg4TrNTtL/scene.splinecode" />
+              )}
             </div>
           </motion.div>
         </div>

@@ -8,9 +8,11 @@
   }
 
   html {
-    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
     overflow-x: hidden;
     width: 100%;
   }
@@ -93,6 +95,12 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .gpu {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
 }
 
 /* Page transition overlay */
@@ -112,3 +120,15 @@
   opacity: 0 !important;
   pointer-events: none !important;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Reduce composite cost on heavily animated sections */
+section { contain: layout style; }
+img, video { content-visibility: auto; }
