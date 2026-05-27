@@ -144,25 +144,7 @@ export default function ContactInfo() {
           </a>
         </div>
 
-        {/* Map placeholder */}
-        <div className="relative rounded-2xl overflow-hidden border border-surface-200 h-48 bg-surface-100">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <HiOutlineLocationMarker className="w-8 h-8 text-ocean-400 mx-auto mb-2" />
-              <p className="text-sm font-medium text-ink-500">Gurgaon, India</p>
-              <p className="text-xs text-ink-400 mt-1">Remote-friendly</p>
-            </div>
-          </div>
-          {/* Decorative grid */}
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(14,165,233,1) 1px, transparent 1px), linear-gradient(90deg, rgba(14,165,233,1) 1px, transparent 1px)",
-              backgroundSize: "30px 30px",
-            }}
-          />
-        </div>
+
       </div>
     </ScrollReveal>
   );

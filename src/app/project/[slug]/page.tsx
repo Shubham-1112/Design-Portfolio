@@ -47,28 +47,16 @@ export default function ProjectPage() {
       </Link>
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
-        {/* Top inline back button for initial view */}
-        <Link
-          href="/#projects"
-          className="inline-flex items-center gap-2 text-ink-500 hover:text-ink-900 mb-8 transition-colors group"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 transform group-hover:-translate-x-1 transition-transform"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          <span className="font-medium">Back to Portfolio</span>
-        </Link>
+
 
         {/* Header */}
         <div className="flex items-center gap-5 mb-12">
-          <div className="w-14 h-14 rounded-full bg-surface-200 flex items-center justify-center text-ink-900 font-bold text-xl shadow-sm">
-            S
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/dp.png"
+            alt="Shubham Saurabh"
+            className="w-14 h-14 rounded-full object-cover shadow-sm"
+          />
           <div>
             <h1 className="text-2xl sm:text-3xl font-display font-bold text-ink-900 leading-tight">
               {project.title}

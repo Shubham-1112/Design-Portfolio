@@ -2,6 +2,7 @@
 
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { HiOutlineAcademicCap, HiOutlineBadgeCheck, HiOutlineStar } from "react-icons/hi";
+import { HiOutlineTrophy } from "react-icons/hi2";
 
 const achievements = [
   {
@@ -13,29 +14,53 @@ const achievements = [
     color: "#0ea5e9",
   },
   {
-    icon: HiOutlineAcademicCap,
+    icon: HiOutlineStar,
     title: "Autodesk Certified User",
     issuer: "Autodesk",
     description:
       "Professional certification in Autodesk design tools, demonstrating proficiency in industry-standard design software.",
+    color: "#f59e0b",
+  },
+  {
+    icon: HiOutlineTrophy,
+    title: "First Prize — CAD War, AARAMBH-2022",
+    issuer: "National Level Technical Symposium",
+    description:
+      "Won first prize in a National level Technical symposium, AARAMBH-2022, in CAD war.",
     color: "#10b981",
   },
   {
-    icon: HiOutlineStar,
-    title: "CAD Competition Achievements",
-    issuer: "Various Competitions",
+    icon: HiOutlineTrophy,
+    title: "Fifth Place — Creative Bicycle Model",
+    issuer: "Design Competition",
     description:
-      "Recognized for excellence in Computer-Aided Design competitions, showcasing technical design skills and creative problem-solving.",
-    color: "#f59e0b",
+      "Fifth place in competition for creative model of bicycle with luggage rack.",
+    color: "#8b5cf6",
+  },
+  {
+    icon: HiOutlineTrophy,
+    title: "Top 10 — 3D Drone Concept",
+    issuer: "Design Competition",
+    description:
+      "Ranked in top 10 for conceptualizing a unique 3D model of drone with eagle claw.",
+    color: "#ec4899",
+  },
+  {
+    icon: HiOutlineAcademicCap,
+    title: "Go Kart Design & Dynamics Training",
+    issuer: "Professional Training",
+    description:
+      "Specialized training on Go Kart design and dynamics, strengthening engineering and mechanical design skills.",
+    color: "#6366f1",
   },
 ];
 
 const education = [
   {
-    degree: "Design & Engineering Background",
-    institution: "Focused on blending technical skills with creative design thinking",
+    degree: "B.E. in Mechanical Engineering",
+    institution: "Dayananda Sagar College of Engineering, Bangalore",
     description:
-      "A multidisciplinary education that provides a strong foundation in both engineering principles and design aesthetics.",
+      "2019 – 2023",
   },
 ];
 

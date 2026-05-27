@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function ContactHero() {
   return (
-    <section className="relative pt-32 pb-8 md:pt-40 md:pb-12 overflow-hidden">
+    <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-ocean-subtle pointer-events-none" />
       <div className="absolute top-20 left-0 w-[400px] h-[400px] bg-ocean-100/30 rounded-full blur-[100px] pointer-events-none" />
 

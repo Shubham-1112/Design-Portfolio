@@ -1,48 +1,33 @@
 "use client";
 
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { HiOutlineLightBulb, HiOutlineDeviceMobile } from "react-icons/hi";
 
-const skills = [
+const skillCategories = [
   {
-    name: "UI/UX Design",
-    level: 95,
-    description: "End-to-end interface design",
+    title: "UX Process",
+    icon: HiOutlineLightBulb,
+    skills: [
+      "User Flows",
+      "Wireframing",
+      "Design System",
+      "Prototyping",
+      "UX Research",
+      "Usability testing"
+    ],
+    color: "#0ea5e9" // Ocean
   },
   {
-    name: "SaaS Design",
-    level: 90,
-    description: "Enterprise software interfaces",
-  },
-  {
-    name: "Design Systems",
-    level: 88,
-    description: "Scalable component libraries",
-  },
-  {
-    name: "Wireframing",
-    level: 92,
-    description: "Low to high-fidelity wireframes",
-  },
-  {
-    name: "Prototyping",
-    level: 90,
-    description: "Interactive clickable prototypes",
-  },
-  {
-    name: "UX Research",
-    level: 85,
-    description: "User interviews & testing",
-  },
-  {
-    name: "Responsive Web Design",
-    level: 93,
-    description: "Mobile-first adaptive layouts",
-  },
-  {
-    name: "Product Design",
-    level: 88,
-    description: "Full product lifecycle design",
-  },
+    title: "Product Specialization",
+    icon: HiOutlineDeviceMobile,
+    skills: [
+      "SaaS",
+      "B2B CPaaS Platform",
+      "App Design",
+      "Responsive Web Design"
+    ],
+    color: "#8b5cf6" // Purple
+  }
 ];
 
 export default function SkillsSection() {
@@ -63,28 +48,32 @@ export default function SkillsSection() {
           </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {skills.map((skill, i) => (
-            <ScrollReveal key={skill.name} delay={i * 0.06}>
-              <div className="group p-6 bg-white rounded-2xl border border-surface-200 hover:border-ocean-200 hover:shadow-elevated transition-all duration-400">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-display text-sm font-semibold text-ink-900">
-                    {skill.name}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {skillCategories.map((category, i) => (
+            <ScrollReveal key={category.title} delay={i * 0.1}>
+              <div className="h-full p-8 bg-white rounded-2xl border border-surface-200 hover:border-ocean-200 hover:shadow-elevated transition-all duration-400">
+                <div className="flex items-center gap-4 mb-6">
+                  <div 
+                    className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: `${category.color}10` }}
+                  >
+                    <category.icon className="w-6 h-6" style={{ color: category.color }} />
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-ink-900">
+                    {category.title}
                   </h3>
-                  <span className="text-xs font-semibold text-ocean-600">
-                    {skill.level}%
-                  </span>
                 </div>
-
-                {/* Progress bar */}
-                <div className="w-full h-1.5 bg-surface-100 rounded-full overflow-hidden mb-3">
-                  <div
-                    className="h-full rounded-full bg-gradient-ocean transition-all duration-700 ease-out"
-                    style={{ width: `${skill.level}%` }}
-                  />
+                
+                <div className="flex flex-wrap gap-2.5">
+                  {category.skills.map(skill => (
+                    <span 
+                      key={skill}
+                      className="px-4 py-2 bg-surface-50 border border-surface-200 rounded-lg text-sm font-medium text-ink-700 hover:border-ocean-300 hover:text-ocean-700 hover:bg-ocean-50 transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
                 </div>
-
-                <p className="text-xs text-ink-400">{skill.description}</p>
               </div>
             </ScrollReveal>
           ))}
