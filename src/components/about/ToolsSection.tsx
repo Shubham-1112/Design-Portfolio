@@ -7,7 +7,10 @@ import {
   HiOutlineCube,
   HiOutlineSparkles,
   HiOutlinePhotograph,
+  HiOutlineTemplate,
+  HiOutlineColorSwatch,
 } from "react-icons/hi";
+import { SiSurveymonkey, SiCanva } from "react-icons/si";
 
 const tools = [
   {
@@ -51,6 +54,30 @@ const tools = [
     icon: HiOutlinePhotograph,
     description: "Image editing & graphics",
     color: "#31A8FF",
+  },
+  {
+    name: "Adobe XD",
+    icon: HiOutlineTemplate,
+    description: "UI/UX design & prototyping",
+    color: "#FF61F6",
+  },
+  {
+    name: "SurveyMonkey",
+    icon: SiSurveymonkey,
+    description: "User research & feedback",
+    color: "#00BF6F",
+  },
+  {
+    name: "Stitch",
+    icon: HiOutlineColorSwatch,
+    description: "Design handoff & components",
+    color: "#1E1E1E",
+  },
+  {
+    name: "Canva",
+    icon: SiCanva,
+    description: "Quick graphics & presentations",
+    color: "#00C4CC",
   },
 ];
 

@@ -40,11 +40,12 @@ export default function Footer() {
             {/* Brand */}
             <div className="md:col-span-5">
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-xl bg-gradient-ocean flex items-center justify-center">
-                  <span className="text-white font-display text-lg font-bold">
-                    S
-                  </span>
-                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/dp.png"
+                  alt="Shubham Saurabh"
+                  className="w-10 h-10 rounded-xl object-cover"
+                />
                 <div>
                   <span className="font-display font-semibold text-white text-sm">
                     Shubham Saurabh
