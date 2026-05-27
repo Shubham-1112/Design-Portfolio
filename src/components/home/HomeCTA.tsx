@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Button from "@/components/ui/Button";
 import dynamic from "next/dynamic";
@@ -15,16 +14,6 @@ const SplineScene = dynamic(() => import("./SplineWrapper"), {
 });
 
 export default function HomeCTA() {
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const check = () => setIsMobile(
-      window.innerWidth < 768 ||
-      (typeof navigator !== 'undefined' && /Mobi|Android/i.test(navigator.userAgent))
-    );
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
 
   return (
     <section className="section-padding bg-white overflow-hidden">
@@ -74,17 +63,7 @@ export default function HomeCTA() {
             <div className="relative lg:absolute lg:inset-0 z-[1] pointer-events-auto">
               <div className="h-[300px] sm:h-[350px] lg:h-auto lg:absolute lg:top-0 lg:bottom-0 lg:right-0 w-full lg:w-[55%] overflow-hidden">
                 <div className="w-full h-full lg:absolute lg:inset-0 flex items-center justify-center [&>div]:w-full [&>div]:h-full [&_a]:!hidden [&_#logo]:!hidden">
-                  {isMobile ? (
-                    <div
-                      className="w-full h-full"
-                      style={{
-                        background: "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 40%, transparent 70%), linear-gradient(135deg, #0369a1 0%, #0c4a6e 100%)",
-                      }}
-                      aria-hidden="true"
-                    />
-                  ) : (
-                    <SplineScene scene="https://prod.spline.design/28KQbfJL2JNssjw3/scene.splinecode" />
-                  )}
+                  <SplineScene scene="https://prod.spline.design/28KQbfJL2JNssjw3/scene.splinecode" />
                 </div>
               </div>
             </div>
