@@ -117,7 +117,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
           >
             <div
-              className="absolute w-[1050px] h-[1050px] top-1/2 left-1/2 -translate-x-[54%] -translate-y-1/2 pointer-events-auto scale-[0.67] origin-center flex items-center justify-center [&>div]:w-full [&>div]:h-full [&_a]:!hidden [&_#logo]:!hidden"
+              className="absolute w-[1050px] h-[1050px] top-1/2 left-1/2 -translate-x-1/2 sm:-translate-x-[54%] -translate-y-1/2 pointer-events-auto scale-[0.67] origin-center flex items-center justify-center [&>div]:w-full [&>div]:h-full [&_a]:!hidden [&_#logo]:!hidden"
             >
               <SplineScene scene="https://prod.spline.design/03USCTROg4TrNTtL/scene.splinecode" />
             </div>
