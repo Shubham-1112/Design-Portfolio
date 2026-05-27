@@ -8,7 +8,7 @@ interface ButtonProps {
   children: React.ReactNode;
   className?: string;
   icon?: boolean;
-  onClick?: () => void;
+  onClick?: (e: any) => void;
   type?: "button" | "submit";
   disabled?: boolean;
   ariaLabel?: string;
