@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import dynamic from "next/dynamic";
-import { useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
 import { HiOutlineArrowDown } from "react-icons/hi";
 
@@ -23,17 +22,6 @@ export default function Hero() {
   const { scrollY } = useScroll();
   const scrollOpacity = useTransform(scrollY, [0, 150], [1, 0]);
 
-  // Mobile detection — skip Spline WebGL on phones
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const check = () => setIsMobile(
-      window.innerWidth < 768 ||
-      (typeof navigator !== 'undefined' && /Mobi|Android/i.test(navigator.userAgent))
-    );
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -144,17 +132,7 @@ export default function Hero() {
             <div
               className="absolute w-[1050px] h-[1050px] top-1/2 left-1/2 -translate-x-1/2 sm:-translate-x-[54%] -translate-y-1/2 pointer-events-auto scale-[0.67] origin-center flex items-center justify-center [&>div]:w-full [&>div]:h-full [&_a]:!hidden [&_#logo]:!hidden"
             >
-              {isMobile ? (
-                <div
-                  className="w-full h-full"
-                  style={{
-                    background: "radial-gradient(circle at 50% 50%, rgba(186,230,253,0.35) 0%, rgba(14,165,233,0.15) 35%, transparent 70%)",
-                  }}
-                  aria-hidden="true"
-                />
-              ) : (
-                <SplineScene scene="https://prod.spline.design/03USCTROg4TrNTtL/scene.splinecode" />
-              )}
+              <SplineScene scene="https://prod.spline.design/03USCTROg4TrNTtL/scene.splinecode" />
             </div>
           </motion.div>
         </div>
