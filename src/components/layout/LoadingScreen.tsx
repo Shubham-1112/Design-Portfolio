@@ -7,7 +7,15 @@ export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1800);
+    // Skip loader on return visits within the same session
+    if (sessionStorage.getItem('visited')) {
+      setIsLoading(false);
+      return;
+    }
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      sessionStorage.setItem('visited', '1');
+    }, 600);
     return () => clearTimeout(timer);
   }, []);
 

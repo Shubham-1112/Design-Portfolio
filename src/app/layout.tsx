@@ -10,12 +10,14 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
 });
 
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
   display: "swap",
+  preload: true,
 });
 
 const playfair = Playfair_Display({
@@ -23,6 +25,7 @@ const playfair = Playfair_Display({
   style: "italic",
   variable: "--font-signature",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -70,6 +73,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable} ${playfair.variable}`}>
       <head>
+        <link rel="preconnect" href="https://prod.spline.design" />
+        <link rel="dns-prefetch" href="https://prod.spline.design" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body className="font-sans">

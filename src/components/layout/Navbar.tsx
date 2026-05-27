@@ -32,7 +32,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-50 bg-white/50 backdrop-blur-md border-b border-white/40 shadow-sm transition-all duration-300"
+        className="fixed top-0 left-0 right-0 z-50 bg-white/50 backdrop-blur-md border-b border-white/40 shadow-sm transition-all duration-300 transform-gpu [will-change:transform] [contain:layout_paint]"
         role="navigation"
         aria-label="Main navigation"
       >
@@ -105,6 +105,7 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
+
 
       {/* Mobile menu overlay */}
       <AnimatePresence>

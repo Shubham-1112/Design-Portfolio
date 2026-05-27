@@ -57,7 +57,7 @@ export default function Button({
 
   if (href) {
     return (
-      <Link href={href} className={`group ${classes}`} aria-label={ariaLabel}>
+      <Link href={href} className={`group ${classes}`} aria-label={ariaLabel} onClick={onClick}>
         {content}
       </Link>
     );

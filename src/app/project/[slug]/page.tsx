@@ -4,13 +4,19 @@ import { useParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { projects } from "@/data/projects";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 export default function ProjectPage() {
   const params = useParams();
   const router = useRouter();
   const slug = params?.slug as string;
   const project = projects.find((p) => p.id === slug);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Redirect if project is not found
   useEffect(() => {
@@ -21,30 +27,34 @@ export default function ProjectPage() {
 
   if (!project) return null;
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="min-h-screen bg-surface-50 pt-28 pb-20"
+  const backButton = (
+    <Link
+      href="/#projects"
+      className="fixed bottom-6 right-6 sm:bottom-10 sm:right-10 z-[100] flex items-center gap-2 px-5 py-3 bg-ink-900 text-white rounded-full shadow-elevated hover:bg-ocean-600 transition-all duration-300 group hover:-translate-y-1"
+      aria-label="Back to Portfolio"
     >
-      {/* Floating Back Button */}
-      <Link
-        href="/#projects"
-        className="fixed bottom-6 right-6 sm:bottom-10 sm:right-10 z-50 flex items-center gap-2 px-5 py-3 bg-ink-900 text-white rounded-full shadow-elevated hover:bg-ocean-600 transition-all duration-300 group hover:-translate-y-1"
-        aria-label="Back to Portfolio"
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-5 w-5 transform group-hover:-translate-x-1 transition-transform"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5 transform group-hover:-translate-x-1 transition-transform"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-        </svg>
-        <span className="font-medium text-sm">Back to Portfolio</span>
-      </Link>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      <span className="font-medium text-sm">Back to Portfolio</span>
+    </Link>
+  );
+
+  return (
+    <>
+      {mounted && createPortal(backButton, document.body)}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="min-h-screen bg-surface-50 pt-28 pb-20"
+      >
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
 
@@ -98,5 +108,6 @@ export default function ProjectPage() {
         </div>
       </div>
     </motion.div>
+    </>
   );
 }

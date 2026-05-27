@@ -7,17 +7,17 @@ export default function AboutHero() {
   return (
     <>
       {/* Hero Section — Full-bleed image banner, maintains 1920:522 aspect ratio */}
-      <section className="relative w-full overflow-hidden">
+      <section className="relative w-full overflow-hidden pt-16 md:pt-20">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7 }}
         >
           <Image
-            src="/about-hero.png"
+            src="/about-hero-v4.png"
             alt="Shubham Saurabh — UI/UX Designer"
-            width={1920}
-            height={522}
+            width={6336}
+            height={1460}
             className="w-full h-auto block"
             priority
           />
